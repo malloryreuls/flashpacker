@@ -1,0 +1,67 @@
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcwSpv0aR2MHcRyKQxg6iMk9zIT92lrgQ&sensor=true"></script>
+
+<div id="map-canvas"></div>
+
+<script type="text/javascript">
+function initialize() {
+	var current_latitude = null;
+	var current_longitude = null;
+	var myLatLng = null;
+	var directionsDisplay;
+	var directionsService = new google.maps.DirectionsService();
+	directionsDisplay = new google.maps.DirectionsRenderer();
+	var map = null;
+
+	navigator.geolocation.getCurrentPosition(function(position) {
+		current_latitude = position.coords.latitude;
+		current_longitude = position.coords.longitude;
+		var myLatLng = new google.maps.myLatLng(current_latitude, current_longitude);
+
+		var mapOptions = {
+			center: myLatLng,
+			zoom: 16
+		};
+
+		var map = new google.maps.Map(document.getElementById("map-canvas"),
+			mapOptions);
+
+		var myLoc = new google.maps.Marker({
+			position: myLatLng,
+			map: map,
+			title: "Current Location"
+		})
+		marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+
+		var getSpots = function(){
+			$.ajax ({
+				type: "GET",
+				dataType: "json",
+				url: "/spots"
+			}).done(function(data){
+				mapMarkers(data);
+			});
+		}
+
+		var mapMarkers = function(spot_data) {
+			var i, newSpot;
+			for (i=0; i < spot_data["spots"].length; i++) {
+
+				newSpot = new google.maps.Marker({
+					position: new google.maps.LatLng(spot_data["spots"][i].latitude, spot_data["spots"][i].longitude),
+					map: map,
+					title: (spot_data["spots"][i].title)					
+				});
+			
+
+			}
+
+		}
+
+		getSpots();	
+
+	});
+
+}
+google.maps.event.addDomListener(window, 'page:change', initialize());
+
+</script>
