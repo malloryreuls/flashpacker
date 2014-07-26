@@ -15,7 +15,7 @@ function initialize() {
 	navigator.geolocation.getCurrentPosition(function(position) {
 		current_latitude = position.coords.latitude;
 		current_longitude = position.coords.longitude;
-		var myLatLng = new google.maps.myLatLng(current_latitude, current_longitude);
+		var myLatLng = new google.maps.LatLng(current_latitude, current_longitude);
 
 		var mapOptions = {
 			center: myLatLng,
@@ -30,7 +30,7 @@ function initialize() {
 			map: map,
 			title: "Current Location"
 		})
-		marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+		myLoc.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
 
 		var getSpots = function(){
 			$.ajax ({
@@ -44,17 +44,14 @@ function initialize() {
 
 		var mapMarkers = function(spot_data) {
 			var i, newSpot;
-			for (i=0; i < spot_data["spots"].length; i++) {
+			for (i=0; i < spot_data.length; i++) {
 
 				newSpot = new google.maps.Marker({
-					position: new google.maps.LatLng(spot_data["spots"][i].latitude, spot_data["spots"][i].longitude),
+					position: new google.maps.LatLng(spot_data[i].latitude, spot_data[i].longitude),
 					map: map,
-					title: (spot_data["spots"][i].title)					
+					title: (spot_data[i].title)					
 				});
-			
-
 			}
-
 		}
 
 		getSpots();	
