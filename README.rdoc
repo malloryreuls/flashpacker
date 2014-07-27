@@ -1,28 +1,9 @@
-== README
+== Flashpacker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+===Helping backpackers travel the world like a local
 
-Things you may want to cover:
+<b>Created with</b> Ruby on Rails, PostgreSQL, Foundation, and Google Maps Javascript API
 
-* Ruby version
+A location-based app that allows backpackers to find, recommend and upvote fun local spots on a map as they travel.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+<b>Created by</b> {Mallory Reulman}[http://www.github.com/malloryreuls] and {Kelsey Ledford}[http://www.github.com/kelseyledford]
