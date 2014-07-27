@@ -42,6 +42,7 @@ class SpotsController < ApplicationController
 
   def show
     @spot = Spot.find(params[:id])
+    @users = User.all
   end
 
   def destroy
@@ -51,6 +52,7 @@ class SpotsController < ApplicationController
   end
 
   def upvote
+    @spot = Spot.find(params[:id])
     @spot.liked_by current_user
     redirect_to :back
   end
@@ -58,7 +60,7 @@ class SpotsController < ApplicationController
   private
 
   def spot_params
-    params.require(:spot).permit(:title, :address, :latitude, :longitude, :tip)
+    params.require(:spot).permit(:title, :address, :latitude, :longitude, :tip, :created_by)
   end
 
 end

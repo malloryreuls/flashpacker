@@ -1,2 +1,7 @@
-<h1>Spots#index</h1>
-<p>Find me in app/views/spots/index.html.erb</p>
+<h1>All Spots</h1>
+
+<ul>
+	<% @spots.each do |s| %>
+	<li><b><%= link_to s.title, spot_path(s) %></b>: <%= s.tip %></li>
+	<% end %>
+</ul>

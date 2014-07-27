@@ -1,4 +1,5 @@
 <%= form_for @spot do |f| %>
+	<%= f.hidden_field :created_by, value: current_user.username %>
 	<%= f.text_field :title, placeholder: 'Spot Name' %>
 	<%= f.text_field :tip, placeholder: 'Description' %>
 	<%= f.text_field :address, placeholder: 'Address' %>

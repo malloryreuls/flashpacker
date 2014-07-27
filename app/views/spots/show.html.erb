@@ -1,2 +1,20 @@
-<h1>Spots#show</h1>
-<p>Find me in app/views/spots/show.html.erb</p>
+<h1><%= @spot.title %></h1>
+
+<p><%= @spot.tip %></p>
+
+<p><%= @spot.address %></p>
+
+<% @users.each do |u| %>
+	<% if u.username == @spot.created_by %>
+		<p>Added by: <%= link_to @spot.created_by, user_path(u) %></p>
+	<% end %>
+<% end %>
+
+<p>Liked by:</p>
+<ul>
+	<% @spot.votes_for.voters.each do |s| %> 
+		<li><%= s.username %></li>
+	<% end %>
+</ul>
+
+<p><%= @spot.get_likes.size %> <%= link_to like_spot_path(@spot), method: :put do %>Like<% end %></p>

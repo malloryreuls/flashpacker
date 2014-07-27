@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      flash[:success] = "Signed In"
+      session[:remember_token] = @user.id.to_s
       redirect_to root_path
     else
       render 'new'
@@ -17,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @spots = Spot.all
     @user = User.find(params[:id])
   end
 
