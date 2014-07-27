@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   get 'map/index'
 
   resources :users
-  resources :spots
+  resources :spots do
+    member do
+      put 'like', to: 'spots#upvote'
+    end
+  end
+
   resource :sessions, only: [:new, :create, :destroy]
 
 

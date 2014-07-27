@@ -50,6 +50,11 @@ class SpotsController < ApplicationController
     redirect_to root_path
   end
 
+  def upvote
+    @spot.liked_by current_user
+    redirect_to :back
+  end
+
   private
 
   def spot_params

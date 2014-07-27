@@ -3,6 +3,15 @@
 <div id="map-canvas"></div>
 
 <script type="text/javascript">
+	// var voteCount = function(spotId){
+	// 	$.ajax ({
+	// 		type: "PUT",
+	// 		dataType: "json",
+	// 		url: "/spots/" + spotId + "/like",
+	// 		data: "{id: " + spotId + "}"
+	// 		});
+	// }
+
 function initialize() {
 	var current_latitude = null;
 	var current_longitude = null;
@@ -42,15 +51,25 @@ function initialize() {
 			});
 		}
 
+
 		var mapMarkers = function(spot_data) {
 			var i, newSpot;
-			for (i=0; i < spot_data.length; i++) {
+			for (i=0; i < spot_data.spots.length; i++) {
 
 				newSpot = new google.maps.Marker({
-					position: new google.maps.LatLng(spot_data[i].latitude, spot_data[i].longitude),
+					position: new google.maps.LatLng(spot_data["spots"][i]["latitude"], spot_data["spots"][i]["longitude"]),
 					map: map,
-					title: (spot_data[i].title)					
+					title: (spot_data["spots"][i].title)			
 				});
+
+				newSpot.info = new google.maps.InfoWindow({
+					content: '<div id="infowindow">' + '<h4>' + spot_data["spots"][i].title + '</h4>' + '<p>' + spot_data["spots"][i].tip + '</p>' + '<p>' + spot_data["spots"][i].address + '</p>' + '<p>' + "<a href='" + spot_data["spots"][i].url + "'>" + "More Details" + '</a>' + '</p>'
+				});
+
+				google.maps.event.addListener(newSpot, 'click', 
+					function() {
+						this.info.open(map, this)
+					});
 			}
 		}
 
