@@ -1,7 +1,11 @@
 <h1>All Spots</h1>
 
-<ul>
+<table>
 	<% @spots.each do |s| %>
-	<li><b><%= link_to s.title, spot_path(s) %></b>: <%= s.tip %></li>
+	<tr>
+		<td><%= s.get_likes.size %><%= link_to like_spot_path(s), method: :put do %><i style="margin-left: 10px" class="fa fa-thumbs-o-up"></i><% end %></td>
+		<td><b><%= link_to s.title, spot_path(s) %></b></td>
+		<td> <%= s.tip %></td>
+	</tr>
 	<% end %>
-</ul>
+</table>

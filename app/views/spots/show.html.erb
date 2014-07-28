@@ -12,8 +12,12 @@
 
 <p>Liked by:</p>
 <ul>
-	<% @spot.votes_for.voters.each do |s| %> 
-		<li><%= s.username %></li>
+	<% @spot.votes_for.voters.each do |s| %>
+		<% @users.each do |u| %>
+			<% if s.username == u.username %>
+				<li><%= link_to s.username, user_path(u) %></li>
+			<% end %>
+		<% end %>
 	<% end %>
 </ul>
 
