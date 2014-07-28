@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
 
   include ApplicationHelper
 
+  def new
+    @spot = Spot.new
+  end
+
 end

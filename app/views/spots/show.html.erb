@@ -1,3 +1,5 @@
+<div class="container">
+
 <h1><%= @spot.title %></h1>
 
 <p><%= @spot.tip %></p>
@@ -22,3 +24,5 @@
 </ul>
 
 <p><%= @spot.get_likes.size %> <%= link_to like_spot_path(@spot), method: :put do %>Like<% end %></p>
+
+</div>
