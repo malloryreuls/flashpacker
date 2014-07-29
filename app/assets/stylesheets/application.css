@@ -12,12 +12,11 @@
  *
  *= require_tree .
  *= require_self
- *= require foundation_and_overrides
+ *= require foundation
  *= require font-awesome
 
  */
 
-@import "foundation_and_overrides";
 
 body {
 	background: url('skulls.png');

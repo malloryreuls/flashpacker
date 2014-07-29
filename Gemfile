@@ -15,6 +15,7 @@ gem 'acts_as_votable'
 gem 'geocoder'
 gem 'foundation-rails'
 gem "font-awesome-rails"
+gem 'rails_12factor'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
