@@ -1,28 +1,39 @@
 <div class="container">
+	<div class="row">
+		<div style="float: left;">
+			<h1 style="display: inline-block;"><%= @spot.title %> </h1>
+			<h1 style="display: inline-block;"><%= link_to like_spot_path(@spot), method: :put do %><i style="margin-left: 5px;" class="fa fa-thumbs-o-up"></i><% end %></h1>
+		</div>
 
-<h1><%= @spot.title %></h1>
+		<h2 style="display: inline-block; float: right;"><small><i class="fa fa-map-marker"></i>&nbsp; <%= @spot.address %></small></h2>
+		<div class="clearfix"></div>
 
-<p><%= @spot.tip %></p>
+		<div class="small-9 columns">
+			<p class="subheader"><%= @spot.tip %></p>
+		</div>
+		<div class="small-3 columns" style="text-align: right; float: right;">
+			<ul style="text-align: right;" >
+				<% @users.each do |u| %>
+				<% if u.username == @spot.created_by %>
+				<p class="subheader">Added by:<br/><%= link_to @spot.created_by, user_path(u) %></p>&nbsp; 
+				<% end %>
+				<% end %>
 
-<p><%= @spot.address %></p>
+				<ul class="no-bullet subheader">
 
-<% @users.each do |u| %>
-	<% if u.username == @spot.created_by %>
-		<p>Added by: <%= link_to @spot.created_by, user_path(u) %></p>
-	<% end %>
-<% end %>
-
-<p>Liked by:</p>
-<ul>
-	<% @spot.votes_for.voters.each do |s| %>
-		<% @users.each do |u| %>
-			<% if s.username == u.username %>
-				<li><%= link_to s.username, user_path(u) %></li>
-			<% end %>
-		<% end %>
-	<% end %>
-</ul>
-
-<p><%= @spot.get_likes.size %> <%= link_to like_spot_path(@spot), method: :put do %>Like<% end %></p>
-
+					<li style="display: inline-block;">Liked by:</li>
+					<% @spot.votes_for.voters.each do |s| %>
+					<% @users.each do |u| %>
+					<% if s.username == u.username %>
+					<ul class="no-bullet">
+						<li class="inline-list"><%= link_to s.username, user_path(u) %></li>
+					</ul>
+					<% end %>
+					<% end %>
+					<% end %>
+				</ul>
+			</ul>
+		</div>
+	</div>
 </div>
+

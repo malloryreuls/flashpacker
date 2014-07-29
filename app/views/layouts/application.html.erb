@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<%= favicon_link_tag 'plane.png' %>
 	<title>Backpackerapp</title>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
@@ -26,14 +27,14 @@
 			<ul class="right">
 				<% if current_user %>
 
-				<li><a href="" data-reveal-id="newSpot"><i class="fa fa-map-marker"></i> Add Spot</a></li>
+				<li><a href="" data-reveal-id="newSpot" class="round button"><i class="fa fa-map-marker"></i> Add Spot</a></li>
 
 				<div id="newSpot" class="reveal-modal" data-reveal>
 					<h3>Add a New Spot</h3>
 					<%= form_for Spot.new do |f| %>
 					<%= f.hidden_field :created_by, value: current_user.username %>
 					<%= f.text_field :title, placeholder: 'Spot Name' %>
-					<%= f.text_field :tip, placeholder: 'Description' %>
+					<%= f.text_field :tip, placeholder: 'Tell other backpackers about this spot in 250 characters or less' %>
 					<%= f.text_field :address, placeholder: 'Address' %>
 					<%= f.submit %>
 					<% end %>
