@@ -21,4 +21,4 @@ spots = Spot.create([
 	{title: "Blue Ribbon Garden", tip: "Rooftop garden on Walt Disney Concert Hall with beautiful views of the city", address: "111 S Grand Ave, Los Angeles, CA, 90012", latitude: 34.055345, longitude: -118.249845, created_by: "wanderlust"},
 	{title: "Far Bar", tip: "Enter this charming bar through a long, narrow brick hallway and enjoy a full bar, including a massive whiskey selection, Asian-influenced cocktails, an extensive sake list, and an enviable set of beer taps that rolls almost 40 deep.", address: "347 E 1st St, Los Angeles, CA, 90012", latitude: 34.04961, longitude: -118.23957, created_by: "urbanexplorer"},
 	{title: "Museum at FIDM", tip: "Check out the annual Oscars and Emmys costume exhibits", address: "919 S Grand Ave, Los Angeles, CA, 90015", latitude: 34.0444498, longitude: -118.259677, created_by: "donthebeachcomber"}
-)]
+])
